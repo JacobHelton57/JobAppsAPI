@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BindingModels\" />
+    <None Remove="JobApps\" />
+    <None Remove="JobApps\Queries\" />
+    <None Remove="MediatR" />
+    <None Remove="Data\" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="JobApps\Commands\" />
+    <None Remove="JobCriteria\" />
+    <None Remove="JobCriteria\Queries\" />
+    <None Remove="JobCriterias\Commands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BindingModels\" />
+    <Folder Include="JobApps\" />
+    <Folder Include="JobApps\Queries\" />
+    <Folder Include="Data\" />
+    <Folder Include="JobApps\Commands\" />
+    <Folder Include="JobCriterias\" />
+    <Folder Include="JobCriterias\Queries\" />
+    <Folder Include="JobCriterias\Commands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.15" />
+  </ItemGroup>
+</Project>
