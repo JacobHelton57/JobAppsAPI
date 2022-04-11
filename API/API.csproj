@@ -28,8 +28,5 @@
     <ProjectReference Include="..\Domain\Domain.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
   </ItemGroup>
 </Project>
