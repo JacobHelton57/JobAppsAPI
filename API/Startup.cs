@@ -8,12 +8,10 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace API
 {
@@ -35,8 +33,12 @@ namespace API
 
             // TODO - Update Db configuration w/Azure SQL connection string
 
+            // Use this connection string to quickly test locally on clients w/o easy access to SQL Server
+            //services.AddDbContext<JobAppsDbContext>(options =>
+            //    options.UseInMemoryDatabase("JobApps"));
+
             services.AddDbContext<JobAppsDbContext>(options =>
-                options.UseInMemoryDatabase("JobApps"));
+                options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
 
             services.AddSwaggerGen();
         }
@@ -47,15 +49,16 @@ namespace API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(
-                    //options =>
-                    //{
-                    //    options.SwaggerEndpoint("/swagger", "v1");
-                    //    options.RoutePrefix = string.Empty;
-                    //}
-                );
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(
+            //options =>
+            //{
+            //    options.SwaggerEndpoint("/swagger", "v1");
+            //    options.RoutePrefix = string.Empty;
+            //}
+            );
 
             app.UseHttpsRedirection();
 
