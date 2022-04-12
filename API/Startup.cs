@@ -34,6 +34,7 @@ namespace API
             // TODO - Update Db configuration w/Azure SQL connection string
 
             // Use this connection string to quickly test locally on clients w/o easy access to SQL Server
+
             //services.AddDbContext<JobAppsDbContext>(options =>
             //    options.UseInMemoryDatabase("JobApps"));
 
@@ -48,8 +49,11 @@ namespace API
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                
             }
+
+            // TODO - Move this back into only for dev once troubleshooting in Azure is complete
+            app.UseDeveloperExceptionPage();
 
             app.UseSwagger();
             app.UseSwaggerUI(
