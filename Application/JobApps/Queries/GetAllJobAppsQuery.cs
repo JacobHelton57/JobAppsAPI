@@ -32,7 +32,7 @@ namespace Application.JobApps.Queries
 
         public async Task<List<JobApp>> Handle(GetAllJobAppsQuery request, CancellationToken cancellationToken)
         {
-            var applicants = await _context.JobApps.ToListAsync();
+            var applicants = await _context.JobApps.Include(applicant => applicant.Answers).ToListAsync();
 
             if (!request.QualifiedOnly)
             {
@@ -60,8 +60,6 @@ namespace Application.JobApps.Queries
             }).ToList();
 
             return qualifiedApplicants;
-
-            throw new NotImplementedException();
         }
     }
 }
